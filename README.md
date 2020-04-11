@@ -59,7 +59,7 @@ import { setupMedia } from '@v-use/media'
 createApp(App).use(setupMedia, { injectKey?: (String | Symbol), breakpoints?: Object }).mount('#app')
 ```
 
-`media` will be available via `inject` in each component - documented below
+`media` will then be available via `useMedia`
 
 #### injectKey
 
