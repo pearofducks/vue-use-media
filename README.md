@@ -21,16 +21,13 @@ import { setupMedia } from '@v-use/media'
 createApp(App).use(setupMedia).mount('#app') // use the default breakpoints
 ```
 
-Then in your components:
-
 ```javascript
-import { inject } from 'vue'
+import { useMedia } from '@v-use/media'
 
 export default {
-  setup() {
-    const media = inject('media') // 'media' is the default, you may specify an alternate key
-    return { media }
-  }
+  setup: () => ({
+    media: useMedia()
+  })
 }
 ```
 
@@ -103,3 +100,5 @@ reactive({
 ```
 
 `mediaName` aligns with each one specified in `breakpoints`, and will dynamically update as the `mediaQuery` changes
+
+`current` is an array of `mediaName`s that currently evaluate to `true`
