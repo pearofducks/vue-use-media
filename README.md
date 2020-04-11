@@ -15,7 +15,7 @@ There are two ways to use this module.
 ##### 1. If you want your entire app to share a set of media-queries
 
 ```javascript
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 import { setupMedia } from '@v-use/media'
 
 createApp(App).use(setupMedia).mount('#app') // use the default breakpoints
