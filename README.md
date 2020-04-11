@@ -12,13 +12,13 @@ yarn add @v-use/media
 
 There are two ways to use this module.
 
-1. If you want your entire app to share a set of media-queries
+##### 1. If you want your entire app to share a set of media-queries
 
 ```javascript
 import { createApp } from 'vue';
-import media from '@v-use/media'
+import { setupMedia } from '@v-use/media'
 
-createApp(App).use(media).mount('#app') // use the default breakpoints
+createApp(App).use(setupMedia).mount('#app') // use the default breakpoints
 ```
 
 Then in your components:
@@ -34,39 +34,41 @@ export default {
 }
 ```
 
-2. If you want different parts of your app to use specific queries
+##### 2. If you want different parts of your app to use specific queries
 
 ```javascript
-import { useMedia } from '@v-use/media'
+import { createMedia } from '@v-use/media'
 
-const localMedia = useMedia({ breakpoints })
+const localMedia = createMedia({ breakpoints })
 ```
 
 ## api
 
-### useMedia
+### createMedia
 
 ```javascript
-import { useMedia } from '@v-use/media'
+import { createMedia } from '@v-use/media'
 
-const media = useMedia({ breakpoints? })
+const media = createMedia({ breakpoints? })
 ```
 
 Returns `media` - documented below
 
-### media.install (default export)
+### setupMedia
 
 ```javascript
-import media from '@v-use/media'
+import { setupMedia } from '@v-use/media'
 
-createApp(App).use(media, { injectKey?: (String | Symbol), breakpoints?: Object }).mount('#app')
+createApp(App).use(setupMedia, { injectKey?: (String | Symbol), breakpoints?: Object }).mount('#app')
 ```
 
 `media` will be available via `inject` in each component - documented below
 
 #### injectKey
 
-An optional parameter to control the injection key used for provide/inject
+An optional parameter to control the injection key used in `useMedia`
+
+Default: 'media'
 
 #### breakpoints
 
@@ -86,6 +88,10 @@ For example the default breakpoints are:
   desktop: 'screen and (min-width: 769px)'
 }
 ```
+
+### useMedia
+
+Returns the `media` set up globally via `setupMedia`
 
 ### media
 

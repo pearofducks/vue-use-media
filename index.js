@@ -1,7 +1,7 @@
-import { reactive } from 'vue'
+import { reactive, inject } from 'vue'
 
-const Media = {}
-
+export const setupMedia = {}
+export let useMedia
 
 const defaultBreakpoints = {
   mobile: 'screen and (max-width: 768px)',
@@ -14,7 +14,10 @@ const install = (app, { injectKey = 'media', breakpoints = defaultBreakpoints } 
     ...Object.keys(breakpoints).reduce((acc,e) => (acc[e] = null, acc), {})
   })
 
-  app?.provide(injectKey, _)
+  if (app) {
+    app.provide(injectKey, _)
+    useMedia = () => inject(injectKey)
+  }
 
   Object.entries(breakpoints).forEach(([media, queryString]) => {
     const query = window.matchMedia(queryString)
@@ -29,7 +32,6 @@ const install = (app, { injectKey = 'media', breakpoints = defaultBreakpoints } 
   return _
 }
 
-Media.install = install
+setupMedia.install = install
 
-export const useMedia = breakpoints => install(null, { breakpoints })
-export default Media
+export const createMedia = breakpoints => install(null, { breakpoints })

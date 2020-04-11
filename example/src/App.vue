@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import { useMedia } from '../../index'
-import { inject } from 'vue'
+import { createMedia, useMedia } from '../../index'
 
 export default {
   name: 'App',
   setup() {
-    const media = inject('media')
-    const otherMedia = useMedia({
+    const media = useMedia()
+    const otherMedia = createMedia({
       mini: 'screen and (max-width: 480px)'
     })
 
