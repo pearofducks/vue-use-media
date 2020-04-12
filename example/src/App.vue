@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ mobile: media.mobile }">
     <p>{{ media }}</p>
     <p>{{ otherMedia }}</p>
   </div>
@@ -7,6 +7,7 @@
 
 <script>
 import { createMedia, useMedia } from '../../index'
+import { watchEffect } from 'vue'
 
 export default {
   name: 'App',
@@ -15,6 +16,7 @@ export default {
     const otherMedia = createMedia({
       mini: 'screen and (max-width: 480px)'
     })
+    watchEffect(() => console.log("Current media has mobile:", media.current.includes('mobile')))
 
     return { media, otherMedia }
   }
@@ -29,5 +31,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.mobile {
+  background-color: lightblue;
+  border-radius: 8px;
+  padding: 24px;
 }
 </style>
