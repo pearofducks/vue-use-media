@@ -1,19 +1,21 @@
 {
-  "name": "example",
-  "version": "0.1.0",
-  "private": true,
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "serve",
+    "prep": "snowpack --no-source-map --clean --optimize --include 'app.js'"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "core-js": "^3.6.4",
-    "vue": "^3.0.0-alpha.11"
+    "@v-use/media": "^0.1.1",
+    "vue": "^3.0.0-beta.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
-    "@vue/compiler-sfc": "^3.0.0-alpha.11",
-    "vue-cli-plugin-vue-next": "~0.1.0"
+    "serve": "^11.3.0",
+    "snowpack": "^1.7.1"
   }
 }

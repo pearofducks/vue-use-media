@@ -1,19 +1,5 @@
-# example
+# vue-use-media example app
 
-## Project setup
-```
-yarn install
-```
+## running
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+`yarn && yarn prep && yarn serve`
