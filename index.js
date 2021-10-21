@@ -25,7 +25,7 @@ const install = (app, { injectKey = 'media', breakpoints = defaultBreakpoints } 
       _[media] = e.matches
       _.current = Object.keys(_).filter(e => e !== 'current' && _[e])
     }
-    query.addListener(callback)
+    query.addEventListener('change', callback)
     callback(query)
   })
 
